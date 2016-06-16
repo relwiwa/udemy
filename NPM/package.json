@@ -1,0 +1,21 @@
+{
+  "name": "learn-nodejs-npm",
+  "version": "1.0.0",
+  "description": "Just trying out NPM",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/relwiwa"
+  },
+  "author": "Walter",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.13.0"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
