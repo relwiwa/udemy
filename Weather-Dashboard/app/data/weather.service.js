@@ -1,6 +1,6 @@
 (function() {
 	angular.module("app.data")
-	.factory("weatherSvc", ["$http", "$q", function($http, $q) {
+	.factory("weatherSvc", ["$http", "$q", "weatherImgUrl", "weatherApiUrl", "countryFlagImgUrl", function($http, $q, weatherImgUrl, weatherApiUrl, countryFlagImgUrl) {
 		// apikey necessary for call to openweathermap's api to work
 		var apiKey = "";
 		
@@ -9,11 +9,15 @@
 		return {
 			find: findByLocation,
 			getCurrent: getCurrentWeather,
-			getForecast: getForecast
+			getForecast: getForecast,
+			getWeatherImgUrl: getWeatherImgUrl,
+			getCountryFlagImgUrl: getCountryFlagImgUrl,
+			kelvinToDegree: kelvinToDegree,
+			getTime: getTime
 		}
 						
 		function findByLocation(location) {
-			var url = "http://api.openweathermap.org/data/2.5/find?q=" + location + "&APPID=" + apiKey;
+			var url = weatherApiUrl + "/find?q=" + location + "&APPID=" + apiKey;
 			
 			var defer = $q.defer();
 			
@@ -31,7 +35,7 @@
 		}
 		
 		function getCurrentWeather(id) {
-			var url = "http://api.openweathermap.org/data/2.5/weather?id=" + id + "&APPID=" + apiKey;
+			var url = weatherApiUrl + "weather?id=" + id + "&APPID=" + apiKey;
 			
 			var defer = $q.defer();
 
@@ -49,7 +53,7 @@
 		}
 		
 		function getForecast(id) {
-			var url = "http://api.openweathermap.org/data/2.5/forecast?id=" + id + "&APPID=" + apiKey;
+			var url = weatherApiUrl + "forecast?id=" + id + "&APPID=" + apiKey;
 			
 			var defer = $q.defer();
 
@@ -64,6 +68,22 @@
 			);
 			
 			return defer.promise;
+		}
+		
+		function getWeatherImgUrl(imgStr) {
+			return weatherImgUrl + imgStr + ".png";
+		}
+		
+		function getCountryFlagImgUrl(imgStr) {
+			return countryFlagImgUrl + imgStr.toLowerCase() + ".png";
+		}
+		
+		function kelvinToDegree(temp) {
+			return temp - 273.15;
+		}
+		
+		function getTime(date) {
+			return new Date(date * 1000);			
 		}
 		
 	}]);

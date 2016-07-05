@@ -3,8 +3,6 @@
 	.controller("Forecast", ["$scope", "$routeParams", "weatherSvc", function($scope, $routeParams, weatherSvc) {
 		$scope.forecast = null;
 		
-		$scope.getTime = getTime;
-		
 		if ($routeParams.id !== undefined) {
 			getForecast($routeParams.id);
 		}
@@ -22,9 +20,5 @@
 			);
 		}
 		
-		function getTime(date) {
-			return new Date(date * 1000);			
-		}
-
 	}]);
 })();

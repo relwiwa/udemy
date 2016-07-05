@@ -3,8 +3,8 @@
 		<div>
 			<h2>{{current.name}}, {{current.sys.country}}</h2>
 			<ul class="list-inline">
-				<li><img ng-src="http://openweathermap.org/img/w/{{current.weather[0].icon}}.png" /></li>
-				<li><h2>{{current.main.temp-273.15 | number}} &#8451;</h2></li>
+				<li><img ng-src="{{getWeatherImgUrl(current.weather[0].icon)}}" /></li>
+				<li><h2>{{kelvinToDegree(current.main.temp) | number}} &#8451;</h2></li>
 			</ul>
 			<h4>{{current.weather[0].main}}</h4>
 			<p>Got at: {{getTime(current.dt) | date: 'yyyy-MMM-dd HH:mm'}}</p>

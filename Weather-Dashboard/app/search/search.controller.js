@@ -2,7 +2,7 @@
 	angular.module("app.search")
 	.controller("Search", ["$scope", "weatherSvc", function($scope, weatherSvc) {
 		$scope.cities = null;
-
+		
 		$scope.$on("search", search);
 		
 		function search(evt, data) {
