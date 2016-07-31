@@ -2,10 +2,13 @@ var EventEmitter = require('events');
 var util = require('util');
 
 function Greetr() {
+  /*  Make sure, Greetr also gets methods and properties from
+      within EventEmitter's constructor function */ 
+  EventEmitter.call(this);
   this.greeting = 'Hello';
 }
 
-// Greetr inherits prototype of EventEmitter
+// Greetr inherits prototype of EventEmitter (only methods)
 util.inherits(Greetr, EventEmitter);
 
 Greetr.prototype.greet = function(data) {
@@ -22,20 +25,3 @@ greetr1.on('greet', function(data) {
 });
 
 greetr1.greet("Someone");
-
-function A() {
-  this.propertyA = "a";
-}
-
-console.log(A.prototype);
-
-function B() {
-  this.propertyB = "b";
-}
-
-util.inherits(B, A);
-
-var a = new A();
-var b = new B();
-
-console.log(b.propertyA);
