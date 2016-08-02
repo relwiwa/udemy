@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app="meanApp">
+<head>
+  <title>The MEAN Stack</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+<body ng-controller="MainController as vm">
+  <ul>
+    <li ng-repeat="person in vm.people">
+      {{ person.name }}
+    </li>
+  </ul>
+  <script>
+    // serverPeople gets stored via ejs in client variable clientPeople
+    var clientPeople = <%- JSON.stringify(serverPeople) %>;
+  </script>
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>
