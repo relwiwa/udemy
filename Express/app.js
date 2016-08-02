@@ -8,6 +8,12 @@ var port = process.env.PORT || 3000;
 // middleware for static files
 app.use('/assets', express.static(__dirname + '/public'));
 
+// create custom middleware
+app.use('/', function(req, res, next) {
+  console.log('Request Url: ' + req.url);
+  next();
+});
+
 // respond to a GET request for '/'
 app.get('/', function(req, res) {
   res.send('<html><head><link href="assets/style.css" type="text/css" rel="stylesheet" /></head><body><h1>Hello World</h1></body></html>');
