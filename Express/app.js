@@ -5,9 +5,12 @@ var app  = express();
     on local machine use port 3000 */
 var port = process.env.PORT || 3000;
 
+// middleware for static files
+app.use('/assets', express.static(__dirname + '/public'));
+
 // respond to a GET request for '/'
 app.get('/', function(req, res) {
-  res.send('<html><head></head><body><h1>Hello World</h1></body></html>');
+  res.send('<html><head><link href="assets/style.css" type="text/css" rel="stylesheet" /></head><body><h1>Hello World</h1></body></html>');
 });
 
 /* respond to a GET request that contains a parameter
