@@ -29,7 +29,10 @@ app.get('/', function(req, res) {
     parameter can be accessed via req.params.id;
     now parameter gets handed to template engine */
 app.get('/person/:id', function(req, res) {
-  res.render('person', { ID: req.params.id });
+  res.render('person', {
+    ID: req.params.id,
+    QSTR: req.query.srch
+  });
 });
 
 // respond to a GET request for /api

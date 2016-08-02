@@ -4,5 +4,11 @@
 </head>
 <body>
   <h1>Person: <%= ID %></h1>
+  <% if (QSTR) { %>
+  <h3>Querystring: <%= QSTR %></h3>
+  <% }
+  else { %>
+  <h3>No Querystring</h3>
+  <% } %>
 </body>
 </html>
