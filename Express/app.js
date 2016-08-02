@@ -5,6 +5,10 @@ var app  = express();
     on local machine use port 3000 */
 var port = process.env.PORT || 3000;
 
+/*  use ejs as template engine
+    express uses views directory per default */
+app.set('view engine', 'ejs');
+
 // middleware for static files
 app.use('/assets', express.static(__dirname + '/public'));
 
@@ -14,16 +18,18 @@ app.use('/', function(req, res, next) {
   next();
 });
 
-// respond to a GET request for '/'
+/*  respond to a GET request for '/'
+    now using render so that template engine ejs is used */
 app.get('/', function(req, res) {
-  res.send('<html><head><link href="assets/style.css" type="text/css" rel="stylesheet" /></head><body><h1>Hello World</h1></body></html>');
+  res.render('index');
 });
 
-/* respond to a GET request that contains a parameter
+/*  respond to a GET request that contains a parameter
     parameter is set in the url pattern via :id
-    parameter can be accessed via req.params.id */
+    parameter can be accessed via req.params.id;
+    now parameter gets handed to template engine */
 app.get('/person/:id', function(req, res) {
-  res.send('<html><head></head><body><h1>Person: ' + req.params.id + '</h1></body></html>');
+  res.render('person', { ID: req.params.id });
 });
 
 // respond to a GET request for /api
