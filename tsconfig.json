@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "emitDecoratorMetadata": true, // enable angular 2 decorator functionality
+        "experimentalDecorators": true // enable angular 2 decorator functionality
+    },
+    "exclude": [
+        "node_modules",
+        "public/js"
+    ]
+}
