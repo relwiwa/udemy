@@ -18,7 +18,7 @@ export class SigninComponent {
     this.myForm = new FormGroup({
       email: new FormControl(null, [
         Validators.required,
-        Validators.pattern('')
+        Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
       ]),
       password: new FormControl(null, Validators.required),
     });
