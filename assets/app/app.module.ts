@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from "./app.component";
-import { AuthenticationComponent } from "./auth/authentication.component";
+import { AppComponent } from './app.component';
+import { AuthenticationComponent } from './auth/authentication.component';
+import { AuthService } from './auth/auth.service';
 import { HeaderComponent } from './header.component';
 import { LogoutComponent } from './auth/logout.component';
 import { MessageComponent } from './messages/message.component';
@@ -29,6 +30,7 @@ import { SignupComponent } from './auth/signup.component';
         SignupComponent
     ],
     imports: [BrowserModule, FormsModule, HttpModule, ReactiveFormsModule, routing],
+    providers: [AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
