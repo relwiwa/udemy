@@ -1,5 +1,5 @@
+import { EventEmitter, Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-import { Injectable } from '@angular/core';
 
 import 'rxjs/Rx';
 import { Observable } from 'rxjs';
@@ -10,12 +10,11 @@ import { Message } from './message.model';
 
 export class MessageService {
   private messages: Message[] = [];
+  messageIsEdit = new EventEmitter<Message>();
 
   constructor (private http: Http) {}
 
   addMessage(message: Message) {
-    this.messages.push(message);
-
     const body = JSON.stringify(message);
     const headers = {
       headers: new Headers({
@@ -27,7 +26,12 @@ export class MessageService {
       'http://localhost:3000/message',
       body,
       headers)
-    .map((response: Response) => response.json())
+    .map((response: Response) => {
+      const result = response.json();
+      const message = new Message(result.obj.content, 'Dummy', result.obj._id, null);
+      this.messages.push(message);
+      return message;
+    })
     .catch((error: Response) => Observable.throw(error.json()));
   }
 
@@ -38,13 +42,34 @@ export class MessageService {
       let transformedMessages: Message[] = [];
       for (let message of messages) {
         transformedMessages.push(
-          new Message(message.content, 'Dummy', message.id, null)
+          new Message(message.content, 'Dummy', message._id, null)
         );
       }
       this.messages = transformedMessages;
       return transformedMessages;
     })
     .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  editMessage(message: Message) {
+    this.messageIsEdit.emit(message);
+  }
+
+  updateMessage(message: Message) {
+    const body = JSON.stringify(message);
+    const headers = {
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.patch(
+      'http://localhost:3000/message/' + message.messageId,
+      body,
+      headers)
+    .map((response: Response) => response.json())
+    .catch((error: Response) => Observable.throw(error.json()));
+
   }
 
   deleteMessage(message: Message) {
