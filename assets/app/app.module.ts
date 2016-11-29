@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -10,10 +10,7 @@ import { ErrorComponent } from './errors/error.component';
 import { ErrorService } from './errors/error.service';
 import { HeaderComponent } from './header.component';
 import { LogoutComponent } from './auth/logout.component';
-import { MessageComponent } from './messages/message.component';
-import { MessageInputComponent} from './messages/message-input.component';
-import { MessageListComponent } from './messages/message-list.component';
-import { MessagesComponent } from './messages/messages.component';
+import { MessageModule } from './messages/message.module';
 import { routing } from './app.routing';
 import { SigninComponent } from './auth/signin.component';
 import { SignupComponent } from './auth/signup.component';
@@ -25,14 +22,16 @@ import { SignupComponent } from './auth/signup.component';
         ErrorComponent,
         HeaderComponent,
         LogoutComponent,
-        MessageComponent,
-        MessageInputComponent,
-        MessageListComponent,
-        MessagesComponent,
         SigninComponent,
         SignupComponent
     ],
-    imports: [BrowserModule, FormsModule, HttpModule, ReactiveFormsModule, routing],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        MessageModule,
+        ReactiveFormsModule,
+        routing
+    ],
     providers: [AuthService, ErrorService],
     bootstrap: [AppComponent]
 })
