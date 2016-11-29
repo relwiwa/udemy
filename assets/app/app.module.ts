@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './auth/authentication.component';
 import { AuthService } from './auth/auth.service';
+import { ErrorComponent } from './errors/error.component';
+import { ErrorService } from './errors/error.service';
 import { HeaderComponent } from './header.component';
 import { LogoutComponent } from './auth/logout.component';
 import { MessageComponent } from './messages/message.component';
@@ -20,6 +22,7 @@ import { SignupComponent } from './auth/signup.component';
     declarations: [
         AppComponent,
         AuthenticationComponent,
+        ErrorComponent,
         HeaderComponent,
         LogoutComponent,
         MessageComponent,
@@ -30,7 +33,7 @@ import { SignupComponent } from './auth/signup.component';
         SignupComponent
     ],
     imports: [BrowserModule, FormsModule, HttpModule, ReactiveFormsModule, routing],
-    providers: [AuthService],
+    providers: [AuthService, ErrorService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
