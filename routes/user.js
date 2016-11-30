@@ -53,7 +53,7 @@ router.post('/signin', function(req, res, next) {
       });
     }
     // jwt consists of header | payload | verify signature
-    var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
+    var token = jwt.sign({user: user}, process.env.JWT_SECRET, {expiresIn: 7200});
     res.status(200).json({
       message: 'Successfully logged in',
       token: token,

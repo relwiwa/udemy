@@ -2,3 +2,4 @@
 npm_debug.log
 /public/js
 .vscode
+.ENV

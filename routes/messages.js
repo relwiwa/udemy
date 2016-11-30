@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/', function(req, res, next) {
-  jwt.verify(req.query.token, 'secret', function(err, decoded) {
+  jwt.verify(req.query.token, process.env.JWT_SECRET, function(err, decoded) {
     if (err) {
       return res.status(401).json({
         title: 'Not Authenticated',
