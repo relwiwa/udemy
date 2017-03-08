@@ -1,0 +1,30 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "Playground application of Reactive JS course on Udemy",
+  "main": "index.js",
+  "scripts": {
+    "nodemon": "nodemon --watch build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-cached": "^1.1.1",
+    "gulp-load-plugins": "^1.5.0",
+    "nodemon": "^1.11.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "colour": "^0.7.1",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1",
+    "rxjs": "^5.2.0"
+  }
+}
