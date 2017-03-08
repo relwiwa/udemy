@@ -4,6 +4,11 @@ import Rx from 'rxjs/RX';
 const $title = $('#title');
 const $results = $('#results');
 
+// fromEvent checks first argument for event pattern to figure out what kind
+// of element it is dealing with:
+// - on/off
+// - add/removeEventListener
+// - socket.io
 Rx.Observable.fromEvent($title, 'keyup')
   .map(e => e.target.value)
   .distinctUntilChanged()
