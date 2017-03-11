@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, NavParams } from 'ionic-angular';
 
 import { Quote } from '../../data/quote.interface';
+import { QuotesService } from '../../services/quotes';
 
 @Component({
   selector: 'page-quotes',
@@ -12,8 +13,9 @@ import { Quote } from '../../data/quote.interface';
 export class QuotesPage implements OnInit {
   private quoteGroup: { category: string, quotes: Quote[], icon: string };
 
-  constructor(private navParams: NavParams,
-              private alertCtrl: AlertController) {}
+  constructor(private alertCtrl: AlertController,
+              private navParams: NavParams,
+              private quotesSvc: QuotesService) {}
 
   /* In order to use ionViewDidLoad Hook, elvis operator (?) needs to be used in template,
      as template gets rendered by Angular (OnInit) before ionViewDidLoad hook starts */
@@ -41,7 +43,7 @@ export class QuotesPage implements OnInit {
         }, {
           text: 'Yes, go ahead',
           handler: () => {
-            console.log('OK');
+            this.quotesSvc.addQuoteToFavorites(selectedQuote);
           }
         }
       ]

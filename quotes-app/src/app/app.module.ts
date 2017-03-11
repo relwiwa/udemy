@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
+import { QuotesService } from '../services/quotes';
 
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { LibraryPage } from '../pages/library/library';
@@ -33,6 +34,11 @@ import { TabsPage } from '../pages/tabs/tabs';
     SettingsPage,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{
+      provide: ErrorHandler,
+      useClass: IonicErrorHandler
+    },
+    QuotesService]
 })
+
 export class AppModule {}
