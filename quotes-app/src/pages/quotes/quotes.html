@@ -23,10 +23,18 @@
     <ion-row>
       <ion-col text-right>
         <button
+          *ngIf="!isFavorite(quote)"
           ion-button
           clear
           small
-          (click)="onAddToFavorite(quote)">Favorite</button>
+          (click)="onAddToFavorites(quote)">Favorite</button>
+        <button
+          *ngIf="isFavorite(quote)"
+          ion-button
+          clear
+          small
+          color="danger"
+          (click)="removeFromFavorites(quote)">Unfavorite</button>
       </ion-col>
     </ion-row>
   </ion-card>
