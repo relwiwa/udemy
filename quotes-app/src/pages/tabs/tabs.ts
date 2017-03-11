@@ -19,6 +19,7 @@ import { LibraryPage } from '../library/library';
     </ion-tabs>
   `
 })
+
 export class TabsPage {
   private favoritesPage = FavoritesPage;
   private libraryPage = LibraryPage;
