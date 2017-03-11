@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { QuotesService } from '../services/quotes';
+import { SettingsService } from '../services/settings';
 
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { LibraryPage } from '../pages/library/library';
@@ -38,7 +39,8 @@ import { TabsPage } from '../pages/tabs/tabs';
       provide: ErrorHandler,
       useClass: IonicErrorHandler
     },
-    QuotesService]
+    QuotesService,
+    SettingsService]
 })
 
 export class AppModule {}

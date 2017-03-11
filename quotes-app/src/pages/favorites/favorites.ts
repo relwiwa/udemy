@@ -5,6 +5,7 @@ import { MenuController, ModalController } from 'ionic-angular';
 import { Quote } from '../../data/quote.interface';
 import { QuotePage } from '../quote/quote';
 import { QuotesService } from '../../services/quotes';
+import { SettingsService } from '../../services/settings';
 
 @Component({
   selector: 'page-favorites',
@@ -14,9 +15,10 @@ import { QuotesService } from '../../services/quotes';
 export class FavoritesPage {
   quotes: Quote[];
 
-  constructor (private quotesSvc: QuotesService,
-               private menuCtrl: MenuController,
-               private modalCtrl: ModalController) { }
+  constructor (private menuCtrl: MenuController,
+               private modalCtrl: ModalController,
+               private quotesSvc: QuotesService,
+               private settingsSvc: SettingsService) { }
 
   ionViewWillEnter() {
     this.quotes = this.quotesSvc.getFavoriteQuotes();
@@ -44,6 +46,10 @@ export class FavoritesPage {
     /*  Reload quotes, so that quotes update on favorites page
         Alternatively, delete unfavorited quote from this.quotes */
     this.quotes = this.quotesSvc.getFavoriteQuotes();
+  }
+
+  getBackground() {
+    return this.settingsSvc.isAltBackground() ? 'altQuoteBackground' : 'quoteBackground';
   }
 
 }
