@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ModalController } from 'ionic-angular';
+import { MenuController, ModalController } from 'ionic-angular';
 
 import { Quote } from '../../data/quote.interface';
 import { QuotePage } from '../quote/quote';
@@ -15,6 +15,7 @@ export class FavoritesPage {
   quotes: Quote[];
 
   constructor (private quotesSvc: QuotesService,
+               private menuCtrl: MenuController,
                private modalCtrl: ModalController) { }
 
   ionViewWillEnter() {
