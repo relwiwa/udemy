@@ -33,12 +33,16 @@ export class FavoritesPage {
         - if no data gets transported, didLeave is another choice */
     modal.onDidDismiss((remove: boolean) => {
       if (remove === true) {
-        this.quotesSvc.removeQuoteFromFavorites(quote);
-        /*  Reload quotes, so that quotes update on favorites page
-            Alternatively, delete unfavorited quote from this.quotes */
-        this.quotes = this.quotesSvc.getFavoriteQuotes();
+        this.onRemoveFromFavorites(quote);
       }
     });
+  }
+
+  onRemoveFromFavorites(quote: Quote) {
+    this.quotesSvc.removeQuoteFromFavorites(quote);
+    /*  Reload quotes, so that quotes update on favorites page
+        Alternatively, delete unfavorited quote from this.quotes */
+    this.quotes = this.quotesSvc.getFavoriteQuotes();
   }
 
 }
