@@ -10,6 +10,7 @@ import { UserPage } from './user/user';
 })
 
 export class UsersPage {
+  userPage = UserPage;
 
   constructor(private navCtrl: NavController) { }
 
