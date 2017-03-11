@@ -3,16 +3,18 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { BuyoutPage } from '../pages/buyout';
+import { BuyoutPage } from '../pages/buyout/buyout';
 import { HomePage } from '../pages/home/home';
+import { ShopPage } from '../pages/shop/shop';
 import { UserPage } from '../pages/users/user/user';
 import { UsersPage } from '../pages/users/users';
 
-
 @NgModule({
   declarations: [
+    BuyoutPage,
     MyApp,
     HomePage,
+    ShopPage,
     UserPage,
     UsersPage
   ],
@@ -22,8 +24,10 @@ import { UsersPage } from '../pages/users/users';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    BuyoutPage,
     MyApp,
     HomePage,
+    ShopPage,
     UserPage,
     UsersPage
   ],
