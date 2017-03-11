@@ -8,10 +8,9 @@ export class QuotesService {
 
   addQuoteToFavorites(quote: Quote) {
     this.favoriteQuotes.push(quote);
-    console.log(this.favoriteQuotes);
   }
 
-  removeQuoteFromoFavorites(quote: Quote) {
+  removeQuoteFromFavorites(quote: Quote) {
     const position = this.favoriteQuotes.findIndex((quoteElement: Quote) => {
       return quoteElement.id === quote.id;
     });
