@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class App extends Component {
+import BookList from '../containers/book-list';
+
+export default class App extends React.Component {
   render() {
     return (
-      <div>Redux simple starter</div>
+      <div>
+        <BookList />
+      </div>
     );
   }
 }
