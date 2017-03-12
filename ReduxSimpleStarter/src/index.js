@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-// 1. Create a new component. This component should produce some HTML
+import SearchBar from './components/search-bar';
+
+import apiKeys from './api-keys';
+
 
 // Component is a function or object that returns a certain amount of HTML
 const App = () => {
-  return <div>Hello World!</div>;
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
 }
 
-
-// 2. Take this component's generated HTML and put it on the page (in the DOM)
 
 // Passing <App /> creates instance of App class defined above
 // First argument is element to be inserted, second where to insert it
