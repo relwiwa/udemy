@@ -1,18 +1,41 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import YTSearch from 'youtube-api-search';
 
+import API_KEYS from './api-keys';
 import SearchBar from './components/search-bar';
+import VideoList from './components/video-list';
 
-import apiKeys from './api-keys';
 
 
-// Component is a function or object that returns a certain amount of HTML
-const App = () => {
-  return (
-    <div>
-      <SearchBar />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      videos: []
+    }
+
+    // Downward data flow: most parent component should be responsible for
+    // fetching data from Api
+    YTSearch({
+      key: API_KEYS.youtubeKey,
+      term: 'surfboards'
+    }, (videos) => {
+      this.setState({ videos })
+    });
+
+  }
+
+  render() {
+    // 'Passing props' is passing data from parent to child component
+    return (
+      <div>
+        <SearchBar />
+        <VideoList videos={this.state.videos} />
+      </div>
+    );
+  }
 }
 
 
