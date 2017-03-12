@@ -25,6 +25,11 @@ class SearchBar extends React.Component {
     };
   }
 
+  onInputChange(term) {
+    this.setState({term});
+    this.props.onSearchTermChange(term);
+  }
+
   // - Every class-based component must provide render method
   render() {
     // - Input element is controlled component, as it gets its value from state
@@ -34,10 +39,10 @@ class SearchBar extends React.Component {
     //   3. State gets updated and component gets re-rendered, updating
     //      input's value 
     return (
-      <div>
+      <div className="search-bar">
         <input
           value={this.state.term}
-          onChange={event => this.setState({ term: event.target.value })} />
+          onChange={event => this.onInputChange(event.target.value)} />
       </div>
     );
   }

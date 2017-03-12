@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import ReactDom from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -17,12 +18,16 @@ class App extends React.Component {
       videos: [],
       selectedVideo: null
     }
+    
+    this.videoSearch('surfboards');
+  }
 
-    // Downward data flow: most parent component should be responsible for
-    // fetching data from Api
+  // Downward data flow: most parent component should be responsible for
+  // fetching data from Api
+  videoSearch(term) {
     YTSearch({
       key: API_KEYS.youtubeKey,
-      term: 'surfboards'
+      term: term
     }, (videos) => {
       this.setState({
         videos: videos,
@@ -33,6 +38,9 @@ class App extends React.Component {
   }
 
   render() {
+    // Throttle api calls based on search term input by user
+    const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
+
     // - 'Passing props' is passing data from parent to child component
     // - Values and (callback-)functions can be passed to child components via
     //   passing props
@@ -40,7 +48,7 @@ class App extends React.Component {
     //   child components below
     return (
       <div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={videoSearch} />
         <VideoDetail video={this.state.selectedVideo} />
         <VideoList
           onVideoSelect={selectedVideo => this.setState({selectedVideo})}
