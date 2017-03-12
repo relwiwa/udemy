@@ -14,7 +14,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      videos: []
+      videos: [],
+      selectedVideo: null
     }
 
     // Downward data flow: most parent component should be responsible for
@@ -23,18 +24,27 @@ class App extends React.Component {
       key: API_KEYS.youtubeKey,
       term: 'surfboards'
     }, (videos) => {
-      this.setState({ videos })
+      this.setState({
+        videos: videos,
+        selectedVideo: videos[0]
+      });
     });
 
   }
 
   render() {
-    // 'Passing props' is passing data from parent to child component
+    // - 'Passing props' is passing data from parent to child component
+    // - Values and (callback-)functions can be passed to child components via
+    //   passing props
+    // - selectedVideo state gets updated via onVideoSelect being passed two
+    //   child components below
     return (
       <div>
         <SearchBar />
-        <VideoDetail video={this.state.videos[0]} />
-        <VideoList videos={this.state.videos} />
+        <VideoDetail video={this.state.selectedVideo} />
+        <VideoList
+          onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+          videos={this.state.videos} />
       </div>
     );
   }

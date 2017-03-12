@@ -6,7 +6,14 @@ const VideoList = (props) => {
   // Arrays rendered as lists should have unique key attribute
   // for enabling React to update changes effectively
   const videoItems = props.videos.map((video) => {
-    return <VideoListItem key={video.etag} video={video} />
+    // onVideoSelect prop gets passed on from parent to child component:
+    // App -> VideoList -> VideoListItem
+    return (
+      <VideoListItem
+        onVideoSelect={props.onVideoSelect}
+        key={video.etag}
+        video={video} />
+    );
   });
 
   return (

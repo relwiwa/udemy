@@ -1,8 +1,9 @@
 import React from 'react';
 
 const VideoDetail = ({video}) => {
-  
-  // Make sure, component only renders when video is passed (api request done)
+
+  // Make sure, component only renders embedded video when video is passed
+  // (api request done); otherwise show loading status message
   if (!video) {
     return <div>Loading...</div>;
   }
