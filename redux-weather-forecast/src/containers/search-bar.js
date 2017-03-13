@@ -1,6 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class SearchBar extends React.Component {
+import { fetchWeather } from '../actions/index';
+
+class SearchBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -11,16 +15,29 @@ export default class SearchBar extends React.Component {
     // - Bind this to SearchBar within event handler function
     // - Alternative to using arrow function within onChange-tag
     this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onInputChange(event) {
     this.setState({ term: event.target.value });
   }
 
+  onFormSubmit(event) {
+    event.preventDefault();
+
+    // ActionCreator with search term
+    this.props.fetchWeather(this.state.term);
+
+    // Clear user input after submit
+    this.setState({ term: ''});
+  }
+
   render() {
     // Make input a controlled component
     return (
-      <form className="input-group">
+      <form
+        onSubmit={this.onFormSubmit}
+        className="input-group">
         <input
           placeholder="Get a five-day forecast in your favorite cities"
           className="form-control"
@@ -34,3 +51,10 @@ export default class SearchBar extends React.Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchWeather }, dispatch);
+}
+
+// Component does not need access to application state, so first
+// argument is set to null
+export default connect(null, mapDispatchToProps)(SearchBar);
