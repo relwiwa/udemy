@@ -1,11 +1,12 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Linking, Text, View } from 'react-native';
 
+import Button from './Button';
 import Card from './Card';
 import CardSection from './CardSection';
 
 const AlbumDetail = ({ album }) => {
-  const { artist, image, title, thumbnail_image } = album;
+  const { artist, image, title, thumbnail_image, url } = album;
   const {
     headerContentStyle,
     headerTextStyle,
@@ -32,11 +33,22 @@ const AlbumDetail = ({ album }) => {
           <Text>{artist}</Text>
         </View>
       </CardSection>
+
       <CardSection>
         <Image
           style={imageStyle}
           source={{ uri: image }}
         />
+      </CardSection>
+      {/* - onPress is a property, not an attribute to handle events
+          - Button does not have onPress attribute
+          - It gets passed on to TouchableOpacity, which has an onPress attribute */}
+      <CardSection>
+        <Button onPress={() => Linking.openURL(url)}>
+          {/* Text will get passed to Button component and be available
+              via props.children */}
+          Buy now
+        </Button>
       </CardSection>
     </Card>
   );
