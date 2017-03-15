@@ -1,10 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 
 import { createPost } from '../actions';
 
 class PostsNew extends Component {
+  // - Gives access to this.context.router property within component
+  // - Context will be retrieved from router
+  // - Necessary to be able to navigate after form submission via push method
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  onSubmit(props) {
+    this.props.createPost(props)
+    .then(() => {
+      // Blog post has been created, navigate user to the index
+      // using router.push method
+      this.context.router.push('/');
+    });
+  }
+
   render() {
     // this.props contains:
     // - declared form fields title, categories, content
@@ -20,7 +36,7 @@ class PostsNew extends Component {
        - Object with form field values gets handed as props to ActionCreator
        - ActionCreator posts form values to backend */
     return (
-      <form onSubmit={handleSubmit(this.props.createPost)}>{}
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>{}
 
         <h3>Create a new post</h3>
 
