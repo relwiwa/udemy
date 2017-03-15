@@ -20,7 +20,7 @@ export function fetchPosts() {
 export function createPost(props) {
   // - Form values are stored in props.title, etc.
   // - Form values get passed on to post request as second argument
-  const request = axios.post(`{ROOT_URL)/posts${API_KEY}`, props);
+  const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, props);
 
   return {
     type: CREATE_POST,

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
+import { Link } from 'react-router';
 
-import { createPost } from '../actions/index';
+import { createPost } from '../actions';
 
 class PostsNew extends Component {
   render() {
@@ -23,26 +24,55 @@ class PostsNew extends Component {
 
         <h3>Create a new post</h3>
 
-        <div className="form-group">
+        <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
           <label>Title</label>
           {/* Add reduxForm helpers by destructuring the respective field properties */}
           <input type="text" className="form-control" {...title} />
+          <div className="text-help">
+            {title.touched ? title.error : ''}
+          </div>
         </div>
 
-        <div className="form-group">
+        <div className={`form-group ${categories.touched && categories.invalid ? 'has-danger' : ''}`}>
           <label>Categories</label>
           <input type="text" className="form-control" {...categories} />
+          <div className="text-help">
+            {categories.touched ? categories.error : ''}
+          </div>
         </div>
 
-        <div className="form-group">
+        <div className={`form-group ${content.touched && content.invalid ? 'has-danger' : ''}`}>
           <label>Content</label>
           <textarea type="text" className="form-control" {...content}/>
+          <div className="text-help">
+            {content.touched ? content.error : ''}
+          </div>
         </div>
 
-        <button type="submit" className="btn bnt-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Submit</button>
+        <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
     );
   }
+}
+
+function validate(values) {
+  // errors[field] ends up in props.fields[field].error
+  const errors = {};
+
+  if (!values.title) {
+    errors.title = 'Enter a username';
+  }
+
+  if (!values.categories) {
+    errors.categories = 'Enter categories';
+  }
+
+  if (!values.content) {
+    errors.content = 'Enter some content';
+  }
+
+  return errors;
 }
 
 // - reduxForm is similar to connect function, it has the same behavior
@@ -53,5 +83,6 @@ class PostsNew extends Component {
    reduxForm: 1. form configuration, 2. mapStateToProps, 3. mapDispatchToProps */
 export default reduxForm({
   form: 'PostsNew',
-  fields: ['title', 'categories', 'content']
+  fields: ['title', 'categories', 'content'],
+  validate
 }, null, { createPost })(PostsNew);
