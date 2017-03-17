@@ -1,8 +1,24 @@
+import _ from 'lodash';
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 
 import { createPost } from '../actions';
+
+const FIELDS = {
+  title: {
+    type: 'input',
+    label: 'Title for Post'
+  },
+  categories: {
+    type: 'input',
+    label: 'Enter some categories for this post'
+  },
+  content: {
+    type: 'textarea',
+    label: 'Post Contents'
+  }
+};
 
 class PostsNew extends Component {
   // - Gives access to this.context.router property within component
@@ -21,12 +37,22 @@ class PostsNew extends Component {
     });
   }
 
-  render() {
-    // this.props contains:
-    // - declared form fields title, categories, content
-    // - handleSubmit function of reduxForm
-    const { fields: { title, categories, content }, handleSubmit } = this.props;
+  renderField(fieldConfig, field) {
+    const fieldHelper = this.props.fields[field];
 
+    return (
+      <div className={`form-group ${fieldHelper.touched && fieldHelper.invalid ? 'has-danger' : ''}`}>
+        <label>{fieldConfig.label}</label>
+        {/* Add reduxForm helpers by destructuring the respective field properties */}
+        <fieldConfig.type type="text" className="form-control" {...fieldHelper} />
+        <div className="text-help">
+          {fieldHelper.touched ? fieldHelper.error : ''}
+        </div>
+      </div>
+    );
+  }
+
+  render() {
     /* form onSubmit:
        - handleSubmit function of reduxForm needs to be passed to onSubmit
        - handleSubmit expects ActionCreator as argument
@@ -36,34 +62,11 @@ class PostsNew extends Component {
        - Object with form field values gets handed as props to ActionCreator
        - ActionCreator posts form values to backend */
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>{}
+      <form onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}>{}
 
         <h3>Create a new post</h3>
 
-        <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
-          <label>Title</label>
-          {/* Add reduxForm helpers by destructuring the respective field properties */}
-          <input type="text" className="form-control" {...title} />
-          <div className="text-help">
-            {title.touched ? title.error : ''}
-          </div>
-        </div>
-
-        <div className={`form-group ${categories.touched && categories.invalid ? 'has-danger' : ''}`}>
-          <label>Categories</label>
-          <input type="text" className="form-control" {...categories} />
-          <div className="text-help">
-            {categories.touched ? categories.error : ''}
-          </div>
-        </div>
-
-        <div className={`form-group ${content.touched && content.invalid ? 'has-danger' : ''}`}>
-          <label>Content</label>
-          <textarea type="text" className="form-control" {...content}/>
-          <div className="text-help">
-            {content.touched ? content.error : ''}
-          </div>
-        </div>
+        {_.map(FIELDS, this.renderField.bind(this))}
 
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
@@ -76,17 +79,11 @@ function validate(values) {
   // errors[field] ends up in props.fields[field].error
   const errors = {};
 
-  if (!values.title) {
-    errors.title = 'Enter a username';
-  }
-
-  if (!values.categories) {
-    errors.categories = 'Enter categories';
-  }
-
-  if (!values.content) {
-    errors.content = 'Enter some content';
-  }
+  _.each(FIELDS, (type, field) => {
+    if (!values[field]) {
+      errors[field] = `Enter a ${field}`;
+    }
+  });
 
   return errors;
 }
@@ -99,6 +96,6 @@ function validate(values) {
    reduxForm: 1. form configuration, 2. mapStateToProps, 3. mapDispatchToProps */
 export default reduxForm({
   form: 'PostsNew',
-  fields: ['title', 'categories', 'content'],
+  fields: _.keys(FIELDS),
   validate
 }, null, { createPost })(PostsNew);
