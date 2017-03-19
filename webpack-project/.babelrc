@@ -1,0 +1,4 @@
+// react preset is necessary to handle JSX
+{
+  "presets": ["babel-preset-env", "react"]
+}
