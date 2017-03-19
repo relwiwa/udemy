@@ -5,14 +5,21 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: 'build/'
   },
   module: {
     rules: [
+
+      // JAVASCRIPT TRANSPILING
+
       {
         use: 'babel-loader',
         test: /\.js$/ // specify the files that this rule is applied to
       },
+
+      // CSS PROCESSING
+
       {
         /* plugins are different from loaders
            - loaders are used to preprocess files before they are included in bundle.js
@@ -21,6 +28,18 @@ const config = {
           loader: 'css-loader'
         }),
         test: /\.css$/
+      }, {
+
+        // IMAGE PROCESSING
+
+        use: [
+          {
+            loader: 'url-loader',
+            options: { limit: 40000 } // images with size <= 40000 get added raw to bundle.js
+          },
+          'image-webpack-loader'
+        ],
+          test: /\.(jpe?g|png|gif|svg)$/
       }
     ]
   },
