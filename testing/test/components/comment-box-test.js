@@ -22,4 +22,18 @@ describe('CommentBox', () => {
     expect(component.find('button')).to.exist;
   });
 
+  // group tests with another describe
+  describe('entering some text', () => {
+
+    beforeEach(() => {
+      // simulate text input change event
+      component.find('textarea').simulate('change', 'new comment');
+    });
+
+    it('shows that text in the textarea', () => {
+      expect(component.find('textarea')).to.have.value('new comment');
+    });
+
+  });
+
 });
