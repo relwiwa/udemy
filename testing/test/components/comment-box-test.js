@@ -34,6 +34,12 @@ describe('CommentBox', () => {
       expect(component.find('textarea')).to.have.value('new comment');
     });
 
+    it('when submitted, clears the input', () => {
+      // component is top-level element which is form, so finding form is not necessary
+      component.simulate('submit');
+      expect(component.find('textarea')).to.have.value('');
+    });
+
   });
 
 });
