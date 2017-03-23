@@ -47,6 +47,13 @@ module.exports = {
        - It creates new index.html file or uses the file specified via template */
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+    // - Define window scope variables with DefinePlugin
+    // - process.env.NODE_ENV:
+    //   * React and other modules check if production mode is set
+    //   * Add NODE_ENV=production to build script in package.json
+    new webpack.DefinePlugin({
+      'process.env.NODE_NEV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 };
