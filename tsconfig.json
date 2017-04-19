@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": false,
-        "sourceMap": false,
-        "strictNullChecks": false
+        "noImplicitAny": true,
+        "noUnusedParameters": true,
+        "sourceMap": true,
+        "strictNullChecks": false,
+        "target": "es5"
     },
     "exclude": [
         "node_modules"
