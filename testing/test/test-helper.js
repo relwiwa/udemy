@@ -43,4 +43,17 @@ function renderComponent(ComponentClass, props, state) {
     return $(ReactDOM.findDOMNode(componentInstance));
 }
 
+// 3. Build helper for simulating events
+
+/*  - Add TestUtils.Simulate to JQuery as simulate
+    - this references the element/s selected via $()
+    - eventName to be simulated gets passed in as an argument */
+$.fn.simulate = function(eventName, value) {
+    if (value) {
+        /* Set value of HTML element */
+        this.val(value);
+    }
+    TestUtils.Simulate[eventName](this[0]);
+}
+
 export { renderComponent, expect };
