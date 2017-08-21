@@ -5,6 +5,13 @@ import { AUTH_ERROR, AUTH_USER, UNAUTH_USER } from './types';
 
 const API_URL = 'http://localhost:3090';
 
+export function authError(error) {
+  return {
+    type: AUTH_ERROR,
+    payload: error,
+  };
+}
+
 export function signinUser({ email, password }) {
   
   // Get access to dispatch method via ReduxThunk (it calls this function automatically)
@@ -27,12 +34,9 @@ export function signinUser({ email, password }) {
       dispatch(authError('Bad Login Info'));
     });
   }
-
 }
 
-export function authError(error) {
-  return {
-    type: AUTH_ERROR,
-    payload: error,
-  };
+export function signoutUser() {
+  localStorage.removeItem('token');
+  return { type: UNAUTH_USER };
 }
