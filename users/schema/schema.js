@@ -28,7 +28,7 @@ const UserType = new GraphQLObjectType({
       // Nested query
       resolve(parentValue, args) {
         return axios.get(`http://localhost:3000/companies/${parentValue.companyId}`)
-          .then(res => res.data);
+          .then(response => response.data);
       }
     }
   }
@@ -50,8 +50,16 @@ const RootQuery = new GraphQLObjectType({
           // Get rid of data property for GraphQL
           .then(response => response.data);
       }
+    },
+    company: {
+      type: CompanyType,
+      args: { id: { type: GraphQLString } },
+      resolve(parentValue, args) {
+        return axios.get(`http://localhost:3000/companies/${args.id}`)
+          .then(response => response.data);
+      }
     }
-  }
+  },
 });
 
 // GraphQLSchema takes in a root query and returns a GraphQL instance
