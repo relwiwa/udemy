@@ -4,6 +4,7 @@ const axios = require('axios');
 const {
   GraphQLInt,
   GraphQLList,
+  GraphQLNonNull,
   GraphQLObjectType,
   GraphQLSchema,
   GraphQLString
@@ -71,7 +72,28 @@ const RootQuery = new GraphQLObjectType({
   },
 });
 
+const mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+    addUser: {
+      type: UserType,
+      args: {
+        // GraphQLNonNull needs to be provided, cannot be null
+        firstName: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: new GraphQLNonNull(GraphQLInt) },
+        companyId: { type: GraphQLString }
+      },
+      // destructure args object parameter into { firstName, age }
+      resolve(parentVal, { firstName, age }) {
+        return axios.post('http://localhost:3000/users', { firstName, age })
+          .then(response => response.data);
+      }
+    }
+  }
+});
+
 // GraphQLSchema takes in a root query and returns a GraphQL instance
 module.exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation
 });
