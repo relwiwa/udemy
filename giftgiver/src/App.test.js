@@ -2,6 +2,7 @@ import Adapter from './Enzyme.config';
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
+import Gift from './Gift';
 
 describe('App', () => {
 
@@ -31,6 +32,10 @@ describe('App', () => {
   
     it('adds a new gift to the rendered list', () => {
       expect(app.find('.gift-list').children().length).toEqual(1);
+    });
+
+    it('creates a Gift component', () => {
+      expect(app.find('Gift').exists()).toBe(true);
     });
 
   });
