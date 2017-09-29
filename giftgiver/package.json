@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "enzyme": "^3.0.0",
-    "jest-cli": "^20.0.4"
+    "enzyme-adapter-react-15": "^1.0.0",
+    "jest-cli": "^20.0.4",
+    "react-test-renderer": "^15.6.2"
   }
 }
