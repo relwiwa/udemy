@@ -25,4 +25,8 @@ describe('App', () => {
     expect(app.find('Connect(Loot)').exists()).toBe(true);
   });
 
+  it('contains a link to the coindesk price page', () => {
+    expect(app.find('a').props().href).toBe('https://www.coindesk.com/price');
+  });
+
 });
