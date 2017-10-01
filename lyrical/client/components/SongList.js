@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import fetchSongsQuery from '../queries/fetchSongs';
 
 class SongList extends Component {
   renderSongs() {
@@ -20,22 +22,21 @@ class SongList extends Component {
     }
 
     return (
-      <ul className="collection">{this.renderSongs()}</ul>
+      <div>
+        <ul className="collection">{this.renderSongs()}</ul>
+        <Link
+          to="/songs/new"
+          className="btn-floating btn-large red right"
+        >
+          <i className="material-icons">add</i>
+        </Link>
+      </div>
     );
   }
 }
-
-const query = gql`
-  {
-    songs {
-      id
-      title
-    }
-  }
-`;
 
 /*  query will be sent to server after component renders
     - result from server will be available via this.props.data
     - when result is finished, this.props.data.songs will be available
     - component gets re-rendered when results are received (as props change) */
-export default graphql(query)(SongList);
+export default graphql(fetchSongsQuery)(SongList);
