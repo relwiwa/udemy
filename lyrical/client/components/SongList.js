@@ -5,11 +5,27 @@ import { graphql } from 'react-apollo';
 import fetchSongsQuery from '../queries/fetchSongs';
 
 class SongList extends Component {
+  onSongDelete(id) {
+    this.props.mutate({ variables: { id } })
+      .then(() => {
+        /*  - refetch will automatically refetch all associated queries
+            - alternative to refetchQueries */ 
+        this.props.data.refetch()
+      });
+    ;
+  }
+
   renderSongs() {
-    return this.props.data.songs.map(song => {
+    return this.props.data.songs.map(({ id, title }) => {
       return (
-        <li key={song.id} className="collection-item">
-          {song.title}
+        <li key={id} className="collection-item">
+            {title}
+          <i
+            className="material-icons"
+            onClick={() => this.onSongDelete(id)}
+          >
+            delete
+          </i>
         </li>
       )
     })
@@ -35,8 +51,19 @@ class SongList extends Component {
   }
 }
 
+const deleteSongMutation = gql`
+  mutation DeleteSong($id: ID) {
+    deleteSong(id: $id) {
+      id
+    }
+  }
+`;
+
+/* graphql can only handle one mutation per call, so two calls necessary */
+export default graphql(deleteSongMutation)(
 /*  query will be sent to server after component renders
     - result from server will be available via this.props.data
     - when result is finished, this.props.data.songs will be available
     - component gets re-rendered when results are received (as props change) */
-export default graphql(fetchSongsQuery)(SongList);
+  graphql(fetchSongsQuery)(SongList)
+);
