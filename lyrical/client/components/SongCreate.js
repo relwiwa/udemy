@@ -23,6 +23,7 @@ class SongCreate extends Component {
         title: this.state.title,
       },
       refetchQueries: [{
+        // follow-up query is happening, so two queries in total
         query: fetchSongsQuery
       }]    
     })
