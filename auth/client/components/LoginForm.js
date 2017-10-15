@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hashHistory } from 'react-router';
 import { graphql } from 'react-apollo';
 
 import AuthForm from './AuthForm';
@@ -14,11 +15,21 @@ class LoginForm extends Component {
     };
   }
 
+  componentWillUpdate(nextProps) {
+    if (!this.props.data.user && nextProps.data.user) {
+      hashHistory.push('/dashboard');
+    }
+  }
+
   onSubmit({ email, password }) {
     this.props.mutate({
       variables: { email, password },
       refetchQueries: [{ query: CurrentUserQuery }]
     })
+    /*  - .then() is not working for redirecting to dashboard, as it would run parallel
+          to refetchQueries -> race condition
+        - use componentWillUpdate instead, as components update whenever an associated
+          query (CurrentUserQuery) update */
     .catch(res => {
       const errors = res.graphQLErrors.map(error => error.message);
       this.setState({ errors });
@@ -38,4 +49,6 @@ class LoginForm extends Component {
   }
 }
 
-export default graphql(LoginMutation)(LoginForm);
+export default graphql(CurrentUserQuery)(
+  graphql(LoginMutation)(LoginForm)
+);
