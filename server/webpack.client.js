@@ -1,20 +1,16 @@
 const path = require('path');
 
 module.exports = {
-  // Inform webpack that we're building a bundle for
-  // Node.js, rather than for the browser
-  target: 'node',
+  // entry point for client application
+  entry: './src/client/client.js',
 
-  // entry point for server application
-  entry: './src/server.js',
-
-  // where to put the generated output file
+  // where to put the generated (client) output file
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'public'),
   },
 
-  // tell webpack to run babel on every file it runs through
+  // babel config is supposed to be the same for client and server
   module: {
     rules: [
       {
