@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Server side rendering project",
   "scripts": {
-    "dev:server": "nodemon --exec node build/bundle.js --watch build",
-    "dev:build:client": "webpack --config webpack.client.js --watch",
-    "dev:build:server": "webpack --config webpack.server.js --watch"
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:build-client": "webpack --config webpack.client.js --watch",
+    "dev:build-server": "webpack --config webpack.server.js --watch",
+    "dev:server": "nodemon --exec node build/bundle.js --watch build"
   },
   "author": "",
   "license": "ISC",
