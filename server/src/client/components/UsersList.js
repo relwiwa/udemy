@@ -30,8 +30,11 @@ function mapStateToProps(state) {
   return { users: state.users };
 }
 
-function loadData() {
-  console.log('I am trying to load some data');
+function loadData(store) {
+  /*  - manual dispatch necessary as connect is not available (no Provider
+        is used on server)
+      - will return a promise */
+  return store.dispatch(fetchUsers());
 }
 
 export { loadData };

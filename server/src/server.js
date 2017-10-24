@@ -14,12 +14,19 @@ app.get('*', (req, res) => {
   const store = createStore();
 
   // matchRoutes returns array of components for respective route
-  matchRoutes(routes, req.path).map(({ route }) => {
+  const promises = matchRoutes(routes, req.path).map(({ route }) => {
     // loadData needs to be defined for connected component that need data
-    return route.loadData ? route.loadData() : null;
+    return route.loadData ? route.loadData(store) : null;
   });
 
-  res.send(renderer(req, store));
+  /*  when all loadData functions are done, req along with filled store can
+      be passed to StaticRouter to render component/s on server, as components
+      now can use their mapStateToProps functions to get the data from the now
+      filled store */
+  Promise.all(promises).then(() => {
+    res.send(renderer(req, store));
+  });
+
 });
 
 app.listen(3000, () => {
