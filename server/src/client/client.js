@@ -12,7 +12,7 @@ import routes from './routes';
 
 const store = createStore(
   reducers,
-  {},
+  window.INITIAL_STATE,
   applyMiddleware(thunk),
 );
 
