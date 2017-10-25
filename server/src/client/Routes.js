@@ -6,11 +6,10 @@ import UsersListPage, { loadData } from './pages/UsersListPage';
 export default [
   {
     path: '/',
-    component: HomePage,
+    ...HomePage,
     exact: true,
   }, {
     path: '/users',
-    component: UsersListPage,
-    loadData,
+    ...UsersListPage,
   },
 ];
