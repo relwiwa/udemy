@@ -22,7 +22,7 @@ app.use(
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
-  const store = createStore();
+  const store = createStore(req);
 
   // matchRoutes returns array of components for respective route
   const promises = matchRoutes(routes, req.path).map(({ route }) => {
