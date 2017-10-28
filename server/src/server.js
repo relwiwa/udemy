@@ -11,9 +11,9 @@ const app = express();
 
 app.use(
   '/api',
-  proxy('https://react-ssr-api.herokuapp.com', {
+  proxy('http://react-ssr-api.herokuapp.com', {
     proxyReqOptDecorator(opts) {
-      opts.headers['x-forward-host'] = 'localhost:3000';
+      opts.headers['x-forwarded-host'] = 'localhost:3000';
       return opts;
     }
   })
@@ -25,10 +25,11 @@ app.get('*', (req, res) => {
   const store = createStore(req);
 
   // matchRoutes returns array of components for respective route
-  const promises = matchRoutes(routes, req.path).map(({ route }) => {
+  const promises = matchRoutes(routes, req.path)
+    .map(({ route }) => {
     // loadData needs to be defined for connected component that need data
-    return route.loadData ? route.loadData(store) : null;
-  });
+      return route.loadData ? route.loadData(store) : null;
+    });
 
   /*  when all loadData functions are done, req along with filled store can
       be passed to StaticRouter to render component/s on server, as components

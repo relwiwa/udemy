@@ -1,5 +1,6 @@
 import React from 'react';
 
+import AdminsListPage from './pages/AdminsListPage';
 import App from './App';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -21,7 +22,7 @@ export default [
         /*  no path property means, it will be shown when
             no other route matched */
         ...NotFoundPage,
-      }
+      },
     ],
   },
 ];
