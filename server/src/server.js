@@ -48,6 +48,14 @@ app.get('*', (req, res) => {
     const context = {};
     const content = renderer(req, store, context);
 
+    /*  - when redirect is supposed to happen via <Redirect>, context
+          object contains REPLACE action as well as url property
+        - this is used to redirect on the server, where redirect via
+          React Router don't work as StaticRouter is used */
+    if (context.url) {
+      return res.redirect(301, context.url);
+    }
+
     if (context.notFound) {
       res.status(404);
     }
