@@ -29,6 +29,15 @@ app.get('*', (req, res) => {
     .map(({ route }) => {
     // loadData needs to be defined for connected component that need data
       return route.loadData ? route.loadData(store) : null;
+    })
+    .map(promise => {
+      if (promise) {
+        return new Promise(
+          (resolve, reject) => {
+            promise.then(resolve).catch(resolve)
+          }
+        );
+      }
     });
 
   /*  when all loadData functions are done, req along with filled store can
