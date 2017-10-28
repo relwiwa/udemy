@@ -35,7 +35,14 @@ app.get('*', (req, res) => {
       now can use their mapStateToProps functions to get the data from the now
       filled store */
   Promise.all(promises).then(() => {
-    res.send(renderer(req, store));
+    const context = {};
+    const content = renderer(req, store, context);
+
+    if (context.notFound) {
+      res.status(404);
+    }
+
+    res.send(content);
   });
 
 });
