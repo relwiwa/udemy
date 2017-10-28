@@ -2,6 +2,7 @@ import React from 'react';
 
 import App from './App';
 import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 import UsersListPage, { loadData } from './pages/UsersListPage';
 
 export default [
@@ -16,7 +17,11 @@ export default [
       }, {
         path: '/users',
         ...UsersListPage,
-      },    
+      }, {
+        /*  no path property means, it will be shown when
+            no other route matched */
+        ...NotFoundPage,
+      }
     ],
   },
 ];
