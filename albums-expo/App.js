@@ -1,13 +1,26 @@
 import React from 'react';
+import { View } from 'react-native';
 
-import Header from './src/components/header';
+import AlbumList from './src/components/album/album-list';
+import Header from './src/reusable-components/header';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
-      <Header
-        headerText="Albums!"
-      />
+      <View style={styles.container}>
+        <Header
+          headerText="Albums"
+        />
+        <AlbumList />
+      </View>
     );
   }
 }
+
+const styles = {
+  container: {
+    flex: 1,
+  },
+};
+
+export default App;
