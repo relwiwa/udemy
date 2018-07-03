@@ -1,17 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import AlbumList from './src/components/album/album-list';
-import Header from './src/reusable-components/header';
+import Album from './src/components/album/album';
+import Auth from './src/components/auth/auth';
 
 class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header
-          headerText="Albums"
-        />
-        <AlbumList />
+        <Auth />
       </View>
     );
   }
