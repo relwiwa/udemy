@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Picker, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import { employeeUpdate } from '../../actions/manager';
+import { employeeCreate, employeeUpdate } from '../../actions/manager';
 
 import Button from '../../reusable-components/button';
 import Card from '../../reusable-components/card';
@@ -10,6 +10,11 @@ import CardSection from '../../reusable-components/card-section';
 import Input from '../../reusable-components/input';
 
 class EmployeeCreate extends Component {
+  onButtonPress() {
+    const { employeeCreate, name, phone, shift } = this.props;
+    employeeCreate({ name, phone, shift: shift || 'Monday' });
+  }
+
   render() {
     return (
       <Card>
@@ -46,7 +51,7 @@ class EmployeeCreate extends Component {
           </Picker>
         </CardSection>
         <CardSection>
-          <Button>
+          <Button onPress={this.onButtonPress.bind(this)}>
             Create
           </Button>
         </CardSection>
@@ -70,7 +75,10 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  return { name, phone, shift } = state.employee;
+  return { name, phone, shift } = state.employeeForm;
 }
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);
+export default connect(mapStateToProps, {
+  employeeCreate,
+  employeeUpdate,
+ })(EmployeeCreate);

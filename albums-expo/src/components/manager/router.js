@@ -22,6 +22,7 @@ const RouterComponent = () => {
             component={EmployeeList}
             key="employeeList"
             rightTitle="Add"
+            rightButtonTextStyle={{ paddingLeft: 15 }}
             onRight={() => Actions.employeeCreate()}
             title="Employees"
           />
