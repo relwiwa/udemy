@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
-import { firebaseKeys } from '../../../keys';
+import { firebaseKeysAuth } from '../../../keys';
 
 import Button from '../../reusable-components/button';
 import Card from '../../reusable-components/card';
@@ -20,7 +20,7 @@ class Auth extends Component {
   }
 
   componentDidMount() {
-    firebase.initializeApp(firebaseKeys);
+    firebase.initializeApp(firebaseKeysAuth);
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ loggedIn: true });

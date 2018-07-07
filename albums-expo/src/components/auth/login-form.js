@@ -7,7 +7,6 @@ import Button from '../../reusable-components/button';
 import Card from '../../reusable-components/card';
 import CardSection from '../../reusable-components/card-section';
 import Input from '../../reusable-components/input';
-import { domainToASCII } from 'url';
 
 class LoginForm extends Component {
   constructor(props) {
