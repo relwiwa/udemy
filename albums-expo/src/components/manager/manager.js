@@ -2,9 +2,7 @@ import firebase from 'firebase';
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
-import Header from '../../reusable-components/header';
-import LoginForm from './login-form';
-
+import Router from './router';
 import { firebaseKeysManager } from '../../../keys';
 
 class Manager extends Component {
@@ -15,10 +13,7 @@ class Manager extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header
-          headerText="Manager"
-        />
-        <LoginForm />
+        <Router />
       </View>
     );
   }
