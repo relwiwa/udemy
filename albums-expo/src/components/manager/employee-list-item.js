@@ -1,13 +1,29 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React, { Component } from 'react';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+
 import CardSection from '../../reusable-components/card-section';
 
-const EmployeeListItem = (props) => {
-  const { name } = props.employee.item;
+class EmployeeListItem extends Component {  
+  onRowPress() {
+    Actions.employeeEdit({ employee: this.props.employee.item });
+  }
 
-  return <CardSection>
-    <Text style={styles.title}>{name}</Text>
-  </CardSection>;
+  render() {
+    const { name } = this.props.employee.item;
+
+    return (
+      <TouchableWithoutFeedback
+        onPress={this.onRowPress.bind(this)}
+      >
+        <View>
+          <CardSection>
+            <Text style={styles.title}>{name}</Text>
+          </CardSection>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  }
 };
 
 const styles = {
