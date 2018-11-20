@@ -1,3 +1,4 @@
-*.js
 node_modules
+scripts/*.js
+bundle.js
 *.js.map
