@@ -1,18 +1,28 @@
 // Exercise 1 - How was your TypeScript Class?
-function Car(name) {
-    this.name = name;
-    this.acceleration = 0;
+class Vehicle {
+    private name: string;
+    private _acceleration: number;
 
-    this.honk = function() {
+    constructor(name: string) {
+        this.name = name;
+        this._acceleration = 0;
+    }
+
+    get acceleration(): number {
+        return this._acceleration;
+    }
+
+    public honk(): void {
         console.log("Toooooooooot!");
     };
 
-    this.accelerate = function(speed) {
-        this.acceleration = this.acceleration + speed;
+    public accelerate(speed: number): void {
+        this._acceleration = this.acceleration + speed;
     }
 }
-var car = new Car("BMW");
-car.honk();
-console.log(car.acceleration);
-car.accelerate(10);
-console.log(car.acceleration);
+
+var vehicle = new Vehicle("BMW");
+vehicle.honk();
+console.log(vehicle.acceleration);
+vehicle.accelerate(10);
+console.log(vehicle.acceleration);
