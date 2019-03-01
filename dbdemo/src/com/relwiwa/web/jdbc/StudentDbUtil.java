@@ -49,7 +49,11 @@ public class StudentDbUtil {
 			close(myConn, myStmt, myRs);
 		}
 	}
-
+	
+	public void addStudent(Student theStudent) {
+		
+	}
+	
 	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
 		try {
 			if (myRs != null) {
