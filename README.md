@@ -3,6 +3,7 @@ Making progress with Udemy. This repo contains material from various Udemy cours
 
 ## List of courses in reversed chronological order
 
+* [JSP, Servlets and JDBC for Beginners](https://github.com/relwiwa/udemy/tree/jsp-servlets-and-jdbc-for-beginners)
 * [Understanding Typescript](https://github.com/relwiwa/udemy/tree/understanding-typescript)
 * [React Native and Redux](https://github.com/relwiwa/udemy/tree/react-native-and-redux)
 * [React: Mastering TDD and BDD](https://github.com/relwiwa/udemy/tree/react-mastering-tdd-and-bdd)
@@ -15,4 +16,4 @@ Making progress with Udemy. This repo contains material from various Udemy cours
 * [Angular 2 verstehen](https://github.com/relwiwa/udemy/tree/angular2-verstehen)
 * [Ionic 2 Pratical Guide](https://github.com/relwiwa/udemy/tree/ionic2-practical-guide)
 * [Angular 2 and NodeJS](https://github.com/relwiwa/udemy/tree/angular2-and-nodejs)
-*[AngularJS Masterclass](https://github.com/relwiwa/udemy/tree/angularjs-masterclass)
+* [AngularJS Masterclass](https://github.com/relwiwa/udemy/tree/angularjs-masterclass)
