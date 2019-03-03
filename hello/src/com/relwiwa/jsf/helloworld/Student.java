@@ -11,6 +11,7 @@ public class Student {
 	private String lastName;
 	private String country;
 	private String favoriteLanguage;
+	private String[] favoriteColors;
 	
 	List<String> countryOptions;
 	
@@ -59,5 +60,13 @@ public class Student {
 
 	public void setFavoriteLanguage(String favoriteLanguage) {
 		this.favoriteLanguage = favoriteLanguage;
+	}
+
+	public String[] getFavoriteColors() {
+		return favoriteColors;
+	}
+
+	public void setFavoriteColors(String[] favoriteColors) {
+		this.favoriteColors = favoriteColors;
 	}
 }

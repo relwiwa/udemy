@@ -22,6 +22,12 @@
 			<f:selectItem itemValue="PHP" itemLabel="PHP" />
 			<f:selectItem itemValue="Ruby" itemLabel="Ruby" />
 		</h:selectOneRadio></p>
+		<p>Favorite colors: <h:selectManyCheckbox value="#{student.favoriteColors}">
+			<f:selectItem itemValue="orange" itemLabel="orange" />
+			<f:selectItem itemValue="green" itemLabel="green" />
+			<f:selectItem itemValue="blue" itemLabel="blue" />
+			<f:selectItem itemValue="red" itemLabel="red" />
+		</h:selectManyCheckbox></p>
 		<p><h:commandButton value="Submit" action="student-response" /></p>
 	</h:form>
 </h:body>
