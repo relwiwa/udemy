@@ -16,6 +16,12 @@
 		<p>Country: <h:selectOneMenu value="#{student.country}">
 			<f:selectItems value="#{student.countryOptions}" />
 		</h:selectOneMenu></p>
+		<p>Favorite Programming Languages: <h:selectOneRadio value="#{student.favoriteLanguage}">
+			<f:selectItem itemValue="Java" itemLabel="Java" />
+			<f:selectItem itemValue="Javascript" itemLabel="Javascript" />
+			<f:selectItem itemValue="PHP" itemLabel="PHP" />
+			<f:selectItem itemValue="Ruby" itemLabel="Ruby" />
+		</h:selectOneRadio></p>
 		<p><h:commandButton value="Submit" action="student-response" /></p>
 	</h:form>
 </h:body>

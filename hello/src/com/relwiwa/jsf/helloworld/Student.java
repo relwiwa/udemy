@@ -10,6 +10,7 @@ public class Student {
 	private String firstName;
 	private String lastName;
 	private String country;
+	private String favoriteLanguage;
 	
 	List<String> countryOptions;
 	
@@ -50,5 +51,13 @@ public class Student {
 
 	public List<String> getCountryOptions() {
 		return countryOptions;
+	}
+
+	public String getFavoriteLanguage() {
+		return favoriteLanguage;
+	}
+
+	public void setFavoriteLanguage(String favoriteLanguage) {
+		this.favoriteLanguage = favoriteLanguage;
 	}
 }
