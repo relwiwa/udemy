@@ -1,5 +1,6 @@
 package com.relwiwa.jsf.helloworld;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,14 @@ public class Student {
 		countryOptions.add("Germany");
 		countryOptions.add("India");
 		countryOptions.add("Turkey");
+
+		// pre-population
+		firstName = "Mary";
+		lastName = "Public";
+		country = "India";
+		favoriteLanguage = "Javascript";
+		favoriteColors = new String[] {"orange", "blue"};
+		
 	}
 
 	// ManagedBeand needs getters and setters
