@@ -14,11 +14,7 @@
 		<p>First name: <h:inputText id="firstName" value="#{student.firstName}" /></p>
 		<p>Last name: <h:inputText id="lastName" value="#{student.lastName}" /></p>
 		<p>Country: <h:selectOneMenu value="#{student.country}">
-			<f:selectItem itemValue="Brazil" itemLabel="Brazil" />
-			<f:selectItem itemValue="France" itemLabel="France" />
-			<f:selectItem itemValue="Germany" itemLabel="Germany" />
-			<f:selectItem itemValue="India" itemLabel="India" />
-			<f:selectItem itemValue="Turkey" itemLabel="Turkey" />
+			<f:selectItems value="#{student.countryOptions}" />
 		</h:selectOneMenu></p>
 		<p><h:commandButton value="Submit" action="student-response" /></p>
 	</h:form>
