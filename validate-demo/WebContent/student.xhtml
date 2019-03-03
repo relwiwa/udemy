@@ -13,21 +13,32 @@
 </h:head>
 <h:body>
 	<h:form>
-		<h:messages styleClass="error" />
 		<p>First name: <h:inputText
 			value="#{student.firstName}"
 			label="First name"
 		/></p>
-		<p>Last name: <h:inputText
-			value="#{student.lastName}"
-			label="Last name"
-			required="true"
-		/></p>
-		<p>Last name: <h:inputText
-			value="#{student.email}"
-			label="Email"
-			required="true"
-		/></p>
+		<p>
+			Last name:
+			<h:inputText
+				id="last_name"
+				value="#{student.lastName}"
+				label="Last name"
+				required="true"
+				requiredMessage="Your last name is mandatory"
+			/>
+			<h:message for="last_name" styleClass="error" />
+		</p>
+		<p>
+			Last name:
+			<h:inputText
+				id="email"
+				value="#{student.email}"
+				label="Email"
+				required="true"
+				requiredMessage="Your email is mandatory"
+			/>
+			<h:message for="email" styleClass="error" />			
+		</p>
 		<p><h:commandButton value="Submit" action="student-response" /></p>
 	</h:form>
 </h:body>
