@@ -29,7 +29,7 @@
 			<h:message for="last_name" styleClass="error" />
 		</p>
 		<p>
-			Last name:
+			Email:
 			<h:inputText
 				id="email"
 				value="#{student.email}"
@@ -38,6 +38,28 @@
 				requiredMessage="Your email is mandatory"
 			/>
 			<h:message for="email" styleClass="error" />			
+		</p>
+		<p>
+			Free passes:
+			<h:inputText
+				id="free_passes"
+				value="#{student.freePasses}"
+				label="Free passes"
+			>
+				<f:validateLongRange minimum="0" maximum="10" />
+			</h:inputText>
+			<h:message for="free_passes" styleClass="error" />			
+		</p>
+		<p>
+			Postal code:
+			<h:inputText
+				id="postal_code"
+				value="#{student.postalCode}"
+				label="Postal code"
+			>
+				<f:validateLength minimum="5" maximum="5" />
+			</h:inputText>
+			<h:message for="postal_code" styleClass="error" />			
 		</p>
 		<p><h:commandButton value="Submit" action="student-response" /></p>
 	</h:form>

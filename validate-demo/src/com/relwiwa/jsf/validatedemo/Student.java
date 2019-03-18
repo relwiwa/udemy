@@ -7,9 +7,27 @@ public class Student {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String postalCode;
+	private int freePasses;
 	
 	public Student() {
 		
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public int getFreePasses() {
+		return freePasses;
+	}
+
+	public void setFreePasses(int freePasses) {
+		this.freePasses = freePasses;
 	}
 
 	public String getFirstName() {
