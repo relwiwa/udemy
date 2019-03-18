@@ -16,8 +16,12 @@ public class Student {
 	private int freePasses;
 	private String courseCode;
 	
-	public Student() {
-		
+	public Student() {}
+	
+	public Student(String firstName, String lastName, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
 	}
 
 	public String getCourseCode() {
