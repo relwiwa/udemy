@@ -18,5 +18,15 @@
 			/>
 		</h:form>
 	</p>
+	<h3>Counter - Session Scope</h3>
+	<p>Counter value: #{counter2.value}</p>
+	<p>
+		<h:form>
+			<h:commandButton
+				value="Increment"
+				action="#{counter2.increment()}"
+			/>
+		</h:form>
+	</p>
 </h:body>
 </html>
