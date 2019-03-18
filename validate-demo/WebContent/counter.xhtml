@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html
+	lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+<h:head>
+	<title>Counter - Application Scope</title>
+</h:head>
+<h:body>
+	<h3>Counter - Application Scope</h3>
+	<p>Counter value: #{counter.value}</p>
+	<p>
+		<h:form>
+			<h:commandButton
+				value="Increment"
+				action="#{counter.increment()}"
+			/>
+		</h:form>
+	</p>
+</h:body>
+</html>
