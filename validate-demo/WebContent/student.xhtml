@@ -52,17 +52,6 @@
 			<h:message for="phone_number" styleClass="error" />			
 		</p>
 		<p>
-			Free passes:
-			<h:inputText
-				id="free_passes"
-				value="#{student.freePasses}"
-				label="Free passes"
-			>
-				<f:validateLongRange minimum="0" maximum="10" />
-			</h:inputText>
-			<h:message for="free_passes" styleClass="error" />			
-		</p>
-		<p>
 			Postal code:
 			<h:inputText
 				id="postal_code"
@@ -72,6 +61,26 @@
 				<f:validateLength minimum="5" maximum="5" />
 			</h:inputText>
 			<h:message for="postal_code" styleClass="error" />			
+		</p>
+		<p>
+			Course code:
+			<h:inputText
+				id="course_code"
+				value="#{student.courseCode}"
+				label="Course code"
+				validator="#{student.validateTheCourseCode}" />
+			<h:message for="course_code" styleClass="error" />			
+		</p>
+		<p>
+			Free passes:
+			<h:inputText
+				id="free_passes"
+				value="#{student.freePasses}"
+				label="Free passes"
+			>
+				<f:validateLongRange minimum="0" maximum="10" />
+			</h:inputText>
+			<h:message for="free_passes" styleClass="error" />			
 		</p>
 		<p><h:commandButton value="Submit" action="student-response" /></p>
 	</h:form>
