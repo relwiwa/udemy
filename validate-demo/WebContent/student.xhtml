@@ -40,6 +40,18 @@
 			<h:message for="email" styleClass="error" />			
 		</p>
 		<p>
+			Phone number:
+			<h:inputText
+				id="phone_number"
+				value="#{student.phoneNumber}"
+				label="Phone number"
+				validatorMessage="Phone number must follow xxx-xxx-xxxx"
+			>
+				<f:validateRegex pattern="\d{3}-\d{3}-\d{4}" />
+			</h:inputText>
+			<h:message for="phone_number" styleClass="error" />			
+		</p>
+		<p>
 			Free passes:
 			<h:inputText
 				id="free_passes"
