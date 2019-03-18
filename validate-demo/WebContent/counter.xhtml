@@ -28,5 +28,15 @@
 			/>
 		</h:form>
 	</p>
+	<h3>Counter - Request Scope</h3>
+	<p>Counter value: #{counter3.value}</p>
+	<p>
+		<h:form>
+			<h:commandButton
+				value="Increment"
+				action="#{counter3.increment()}"
+			/>
+		</h:form>
+	</p>
 </h:body>
 </html>
