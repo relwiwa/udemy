@@ -3,6 +3,7 @@ package jsfbeans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
 
 @ManagedBean
 @RequestScoped
@@ -53,5 +54,9 @@ public class Book {
 	
 	public void saveListener(ActionEvent e) {
 		System.out.println("Abteilungen benachrichtigen: " + java.util.Arrays.toString(this.emailaddresses));
+	}
+	
+	public void emailAddressChanged(ValueChangeEvent e) {
+		System.out.println("Adressen haben sich geändert: " + java.util.Arrays.toString((String[]) e.getNewValue()));		
 	}
 }
