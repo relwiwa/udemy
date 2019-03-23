@@ -1,5 +1,7 @@
 package jsfbeans;
 
+import java.util.LinkedHashMap;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
@@ -13,6 +15,16 @@ public class Book {
 	private String publishDate;
 	private String price;
 	private String[] emailaddresses;
+	private String language = "de";
+	
+	private static LinkedHashMap<String, String> languages;
+	static {
+		languages = new LinkedHashMap<>();
+		languages.put("Deutsch", "de");
+		languages.put("Englisch", "en");
+		languages.put("Italienisch", "it");
+		languages.put("Koreanisch", "kr");		
+	}
 	
 	public String getAuthor() {
 		return author;
@@ -45,6 +57,17 @@ public class Book {
 		this.emailaddresses = emailaddresses;
 	}
 	
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public LinkedHashMap<String, String> getLanguages() {
+		return languages;
+	}
+
 	public String save() {
 		// TODO: abspeichern
 		// Zurückgegeben wird Name der Datei, auf die weitergeleitet werden soll
