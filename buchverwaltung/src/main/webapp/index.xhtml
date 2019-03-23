@@ -15,16 +15,28 @@
 		<h:panelGrid columns="2">
 			<h:outputText value="Autor" />
 			<h:inputText value="#{book.author}" />
+			
 			<h:outputText value="Titel" />
 			<h:inputText value="#{book.name}" />
+			
 			<h:outputText value="Erscheinungsdatum" />
 			<h:inputText value="#{book.publishDate}" />
+			
 			<h:outputText value="Preis" />
 			<h:inputText value="#{book.price}" />
+			
+			<h:outputText value="Abteilungen, die benachrichtigt werden" />
+			<h:selectManyListbox value="#{book.emailaddresses}">
+				<f:selectItem itemValue="abteilung1@mycompany.de" itemLabel="Abteilung 1" />		
+				<f:selectItem itemValue="abteilung2@mycompany.de" itemLabel="Abteilung 2" />
+			</h:selectManyListbox>
 		</h:panelGrid>
+
+		<!--  actionListener-Methode wird vor action-Methode aufgerufen -->
 		<h:commandButton
 			value="Abspeichern"
 			action="#{book.save}"
+			actionListener="#{book.saveListener}"
 		/>
 	</h:form>
 </f:view>
