@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
 
 @ManagedBean
@@ -25,6 +26,8 @@ public class Book {
 		languages.put("Italienisch", "it");
 		languages.put("Koreanisch", "kr");		
 	}
+	
+	private String specialmessage;
 	
 	public String getAuthor() {
 		return author;
@@ -67,7 +70,14 @@ public class Book {
 	public LinkedHashMap<String, String> getLanguages() {
 		return languages;
 	}
+	
+	public String getSpecialmessage() {
+		return specialmessage;
+	}
 
+	public void setSpecialmessage(String specialmessage) {
+		this.specialmessage = specialmessage;
+	}
 	public String save() {
 		// TODO: abspeichern
 		// Zurückgegeben wird Name der Datei, auf die weitergeleitet werden soll
@@ -81,5 +91,14 @@ public class Book {
 	
 	public void emailAddressChanged(ValueChangeEvent e) {
 		System.out.println("Adressen haben sich geändert: " + java.util.Arrays.toString((String[]) e.getNewValue()));		
+	}
+	
+	public void emailAddressChangedAjax(AjaxBehaviorEvent e) {
+		if (emailaddresses.length > 1) {
+			specialmessage = "Zu viele Abteilungen selektiert. Bitte Email-Flut eingrenzen";
+		}
+		else {
+			specialmessage = "";
+		}
 	}
 }

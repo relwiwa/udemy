@@ -5,10 +5,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 >
-<head>
+<!--  head-Tag muss in JSF h:head-Tag umgewandelt werden, damit der AjaxListener funktioniert,
+	  denn dessen Code wird hier im h:head eingefügt -->
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Bucherfassung</title>
-</head>
+</h:head>
 <body>
 <f:view>
 	<h:form>
@@ -38,8 +40,11 @@
 			>
 				<f:selectItem itemValue="abteilung1@mycompany.de" itemLabel="Abteilung 1" />		
 				<f:selectItem itemValue="abteilung2@mycompany.de" itemLabel="Abteilung 2" />
+				<f:ajax event="valueChange" listener="#{book.emailAddressChangedAjax}" render="sm" />
 			</h:selectManyListbox>
 		</h:panelGrid>
+		
+		<h:outputText value="#{book.specialmessage}" id="sm" /><br />
 
 		<!--  actionListener-Methode wird vor action-Methode aufgerufen -->
 		<h:commandButton
