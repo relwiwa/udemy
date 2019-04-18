@@ -8,49 +8,45 @@
 >
 
 <t:composition template="/WEB-INF/templates/standardtemplate.xhtml">
-	<t:define name="pagetitle">Bucherfassung</t:define>
+	<t:define name="pagetitle">Buchliste</t:define>
 	<t:define name="content">
 		<f:view>
-			<h:form>
-				<h:panelGrid columns="2">
-					<h:outputText value="Autor" />
-					<h:inputText value="#{book.author}" />
-					
-					<h:outputText value="Titel" />
-					<h:inputText value="#{book.name}" />
-					
-					<h:outputText value="Erscheinungsdatum" />
-					<h:inputText value="#{book.publishDate}" />
-					
-					<h:outputText value="Sprache" />
-					<h:selectOneListbox value="#{book.language}">
-						<f:selectItems value="#{book.languages}"></f:selectItems>
-						<f:valueChangeListener type="jsfbeans.LanguageValueChangeListener"></f:valueChangeListener>	
-					</h:selectOneListbox>
-					
-					<h:outputText value="Preis" />
-					<h:inputText value="#{book.price}" />
-					
-					<h:outputText value="Abteilungen, die benachrichtigt werden" />
-					<h:selectManyListbox
-						value="#{book.emailaddresses}"
-						valueChangeListener="#{book.emailAddressChanged}"
-					>
-						<f:selectItem itemValue="abteilung1@mycompany.de" itemLabel="Abteilung 1" />		
-						<f:selectItem itemValue="abteilung2@mycompany.de" itemLabel="Abteilung 2" />
-						<f:ajax event="valueChange" listener="#{book.emailAddressChangedAjax}" render="sm" />
-					</h:selectManyListbox>
-				</h:panelGrid>
-				
-				<h:outputText value="#{book.specialmessage}" id="sm" /><br />
-		
-				<!--  actionListener-Methode wird vor action-Methode aufgerufen -->
-				<h:commandButton
-					value="Abspeichern"
-					action="#{book.save}"
-					actionListener="#{book.saveListener}"
-				/>
-			</h:form>
+			<h:dataTable
+				value="#{bookShelf.books}"
+				var="onebook"
+				styleClass="bookTable"
+				headerClass="bookHeader"
+				rowClasses="bookTableOddRow, bookTableEvenRow"
+			>
+				<h:column>
+					<f:facet name="header">No.</f:facet>
+					#{bookShelf.books.rowIndex + 1}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Autor</f:facet>
+					#{onebook.author}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Titel</f:facet>
+					#{onebook.name}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Erscheinungsdatum</f:facet>
+					#{onebook.publishDate}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Sprache</f:facet>
+					#{onebook.language}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Preis</f:facet>
+					#{onebook.price}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Aktionen</f:facet>
+					TODO
+				</h:column>
+			</h:dataTable>
 		</f:view>
 	</t:define>
 </t:composition>
