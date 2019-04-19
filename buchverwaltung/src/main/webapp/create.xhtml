@@ -19,7 +19,9 @@
 						value="#{book.author}"
 						required="true"
 						requiredMessage="Bitte den Autor des Buchs angeben!"
-					/>
+					>
+						<f:validator validatorId="vornameNachnameValidator" />
+					</h:inputText>
 					<h:message for="bookAuthor" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.name']}" />
