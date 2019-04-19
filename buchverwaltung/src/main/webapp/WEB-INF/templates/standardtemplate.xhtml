@@ -9,20 +9,20 @@
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <!-- Buchverwaltung wird ausgegeben, wenn pagetitle nicht gesetzt ist -->
-<title><t:insert name="pagetitle">Buchverwaltung</t:insert></title>
+<title><t:insert name="pagetitle">#{msg['application.title']}</t:insert></title>
 <link href="#{request.contextPath}/css/style.css" type="text/css" rel="stylesheet" />
 </h:head>
 <h:body>
 <f:view>
 	<div id="header">
-		<t:insert name="pagetitle">Buchverwaltung</t:insert>
+		<t:insert name="pagetitle">#{msg['application.title']}</t:insert>
 	</div>
 	<div id="content">
 		<t:insert name="content">TODO</t:insert>
 	</div>
 	<div id="footer">
 		<t:insert name="footer">
-			JSF Demo-Applikation
+			#{msg['application.footer']}
 			<h:outputText value="#{session.lastAccessedTime}">
 				<f:convertDateTime timeStyle="full" type="time" />
 			</h:outputText>

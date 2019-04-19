@@ -8,30 +8,30 @@
 >
 
 <t:composition template="/WEB-INF/templates/standardtemplate.xhtml">
-	<t:define name="pagetitle">Bucherfassung</t:define>
+	<t:define name="pagetitle">#{msg['create.title']}</t:define>
 	<t:define name="content">
 		<f:view>
 			<h:form>
 				<h:panelGrid columns="2">
-					<h:outputText value="Autor" />
+					<h:outputText value="#{msg['create.author']}" />
 					<h:inputText value="#{book.author}" />
 					
-					<h:outputText value="Titel" />
+					<h:outputText value="#{msg['create.name']}" />
 					<h:inputText value="#{book.name}" />
 					
-					<h:outputText value="Erscheinungsdatum" />
+					<h:outputText value="#{msg['create.publishDate']}" />
 					<h:inputText value="#{book.publishDate}" />
 					
-					<h:outputText value="Sprache" />
+					<h:outputText value="#{msg['create.language']}" />
 					<h:selectOneListbox value="#{book.language}">
 						<f:selectItems value="#{book.languages}"></f:selectItems>
 						<f:valueChangeListener type="jsfbeans.LanguageValueChangeListener"></f:valueChangeListener>	
 					</h:selectOneListbox>
 					
-					<h:outputText value="Preis" />
+					<h:outputText value="#{msg['create.price']}" />
 					<h:inputText value="#{book.price}" />
 					
-					<h:outputText value="Abteilungen, die benachrichtigt werden" />
+					<h:outputText value="#{msg['create.departments']}" />
 					<h:selectManyListbox
 						value="#{book.emailaddresses}"
 						valueChangeListener="#{book.emailAddressChanged}"
@@ -46,7 +46,7 @@
 		
 				<!--  actionListener-Methode wird vor action-Methode aufgerufen -->
 				<h:commandButton
-					value="Abspeichern"
+					value="#{msg['create.save']}"
 					action="#{book.save}"
 					actionListener="#{book.saveListener}"
 				/>

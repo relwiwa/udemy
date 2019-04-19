@@ -8,7 +8,7 @@
 >
 
 <t:composition template="/WEB-INF/templates/standardtemplate.xhtml">
-	<t:define name="pagetitle">Buchliste</t:define>
+	<t:define name="pagetitle">#{msg['index.title']}</t:define>
 	<t:define name="content">
 		<f:view>
 			<h:dataTable
@@ -19,31 +19,31 @@
 				rowClasses="bookTableOddRow, bookTableEvenRow"
 			>
 				<h:column>
-					<f:facet name="header">No.</f:facet>
+					<f:facet name="header">#{msg['index.no']}</f:facet>
 					#{bookShelf.books.rowIndex + 1}
 				</h:column>
 				<h:column>
-					<f:facet name="header">Autor</f:facet>
+					<f:facet name="header">#{msg['index.author']}</f:facet>
 					#{onebook.author}
 				</h:column>
 				<h:column>
-					<f:facet name="header">Titel</f:facet>
+					<f:facet name="header">#{msg['index.name']}</f:facet>
 					#{onebook.name}
 				</h:column>
 				<h:column>
-					<f:facet name="header">Erscheinungsdatum</f:facet>
+					<f:facet name="header">#{msg['index.publishDate']}</f:facet>
 					#{onebook.publishDate}
 				</h:column>
 				<h:column>
-					<f:facet name="header">Sprache</f:facet>
+					<f:facet name="header">#{msg['index.language']}</f:facet>
 					#{onebook.language}
 				</h:column>
 				<h:column>
-					<f:facet name="header">Preis</f:facet>
+					<f:facet name="header">#{msg['index.price']}</f:facet>
 					#{onebook.price}
 				</h:column>
 				<h:column>
-					<f:facet name="header">Aktionen</f:facet>
+					<f:facet name="header">#{msg['index.actions']}</f:facet>
 					TODO
 				</h:column>
 			</h:dataTable>
