@@ -12,27 +12,33 @@
 	<t:define name="content">
 		<f:view>
 			<h:form>
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="3">
 					<h:outputText value="#{msg['create.author']}" />
-					<h:inputText value="#{book.author}" />
+					<h:inputText id="bookAuthor" value="#{book.author}" />
+					<h:message for="bookAuthor" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.name']}" />
-					<h:inputText value="#{book.name}" />
+					<h:inputText id="bookTitle" value="#{book.name}" />
+					<h:message for="bookTitle" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.publishDate']}" />
-					<h:inputText value="#{book.publishDate}" />
+					<h:inputText id="bookPublishDate" value="#{book.publishDate}" />
+					<h:message for="bookPublishDate" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.language']}" />
-					<h:selectOneListbox value="#{book.language}">
+					<h:selectOneListbox id="bookLanguage" value="#{book.language}">
 						<f:selectItems value="#{book.languages}"></f:selectItems>
 						<f:valueChangeListener type="jsfbeans.LanguageValueChangeListener"></f:valueChangeListener>	
 					</h:selectOneListbox>
+					<h:message for="bookLanguage" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.price']}" />
-					<h:inputText value="#{book.price}" />
+					<h:inputText id="bookPrice" value="#{book.price}" />
+					<h:message for="bookPrice" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.departments']}" />
 					<h:selectManyListbox
+						id="bookEmailaddresses"
 						value="#{book.emailaddresses}"
 						valueChangeListener="#{book.emailAddressChanged}"
 					>
@@ -40,6 +46,7 @@
 						<f:selectItem itemValue="abteilung2@mycompany.de" itemLabel="Abteilung 2" />
 						<f:ajax event="valueChange" listener="#{book.emailAddressChangedAjax}" render="sm" />
 					</h:selectManyListbox>
+					<h:message for="bookEmailaddresses" styleClass="errorMessage" />
 				</h:panelGrid>
 				
 				<h:outputText value="#{book.specialmessage}" id="sm" /><br />
