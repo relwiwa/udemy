@@ -14,7 +14,12 @@
 			<h:form>
 				<h:panelGrid columns="3">
 					<h:outputText value="#{msg['create.author']}" />
-					<h:inputText id="bookAuthor" value="#{book.author}" />
+					<h:inputText
+						id="bookAuthor"
+						value="#{book.author}"
+						required="true"
+						requiredMessage="Bitte den Autor des Buchs angeben!"
+					/>
 					<h:message for="bookAuthor" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.name']}" />
