@@ -23,7 +23,13 @@
 					<h:message for="bookAuthor" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.name']}" />
-					<h:inputText id="bookTitle" value="#{book.name}" />
+					<h:inputText
+						id="bookTitle"
+						value="#{book.name}"
+						validatorMessage="Der Titel des Buchs muss mindestens 5 und maximal 50 Zeichen lang sein"
+					>
+						<f:validateLength minimum="5" maximum="50" />
+					</h:inputText>
 					<h:message for="bookTitle" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.publishDate']}" />
