@@ -1,5 +1,6 @@
 package jsfbeans;
 
+import java.util.Date;
 import java.util.LinkedHashMap;
 
 import javax.faces.bean.ManagedBean;
@@ -13,7 +14,7 @@ import javax.faces.event.ValueChangeEvent;
 public class Book {
 	private String author;
 	private String name;
-	private String publishDate;
+	private Date publishDate;
 	private Double price;
 	private String[] emailaddresses;
 	private String language = "de";
@@ -41,10 +42,10 @@ public class Book {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPublishDate() {
+	public Date getPublishDate() {
 		return publishDate;
 	}
-	public void setPublishDate(String publishDate) {
+	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
 	public Double getPrice() {

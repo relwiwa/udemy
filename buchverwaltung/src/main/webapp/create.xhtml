@@ -22,7 +22,9 @@
 					<h:message for="bookTitle" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.publishDate']}" />
-					<h:inputText id="bookPublishDate" value="#{book.publishDate}" />
+					<h:inputText id="bookPublishDate" value="#{book.publishDate}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:inputText>
 					<h:message for="bookPublishDate" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.language']}" />
