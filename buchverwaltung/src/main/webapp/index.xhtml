@@ -47,6 +47,10 @@
 					TODO
 				</h:column>
 			</h:dataTable>
+			<!-- h:form ist notwendig, damit h:commandButton funktioniert -->
+			<h:form>
+				<h:commandButton value="Buch erfassen" action="#{bookShelf.prepareNewBook}"></h:commandButton>
+			</h:form>
 		</f:view>
 	</t:define>
 </t:composition>
