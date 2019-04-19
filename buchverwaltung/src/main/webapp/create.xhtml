@@ -33,7 +33,16 @@
 					<h:message for="bookLanguage" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.price']}" />
-					<h:inputText id="bookPrice" value="#{book.price}" />
+					<h:inputText
+						converterMessage="Der Preis muss mit EUR 9,99 z.B. angegeben werden"
+						id="bookPrice"
+						value="#{book.price}"
+					>
+						<f:convertNumber
+							type="currency"
+							currencyCode="EUR"
+						/>
+					</h:inputText>
 					<h:message for="bookPrice" styleClass="errorMessage" />
 					
 					<h:outputText value="#{msg['create.departments']}" />

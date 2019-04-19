@@ -14,7 +14,7 @@ public class Book {
 	private String author;
 	private String name;
 	private String publishDate;
-	private String price;
+	private Double price;
 	private String[] emailaddresses;
 	private String language = "de";
 	
@@ -47,10 +47,10 @@ public class Book {
 	public void setPublishDate(String publishDate) {
 		this.publishDate = publishDate;
 	}
-	public String getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	public String[] getEmailaddresses() {
@@ -82,7 +82,7 @@ public class Book {
 		// TODO: abspeichern
 		// Zurückgegeben wird Name der Datei, auf die weitergeleitet werden soll
 		// .xhtml-Endung ist nicht notwendig
-		return "index";
+		return "create";
 	}
 	
 	public void saveListener(ActionEvent e) {
