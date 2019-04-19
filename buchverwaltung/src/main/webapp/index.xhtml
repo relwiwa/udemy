@@ -47,6 +47,9 @@
 					<h:form>
 						<h:commandButton value="Editieren" action="#{bookShelf.prepareBookEdit(onebook)}" />
 					</h:form>
+					<h:form>
+						<h:commandButton value="Löschen" action="#{bookShelf.deleteBook(onebook)}" />
+					</h:form>
 				</h:column>
 			</h:dataTable>
 			<!-- h:form ist notwendig, damit h:commandButton funktioniert -->

@@ -77,7 +77,13 @@ public class BookShelf implements Serializable{
 			inedit = book;
 			/* Regel-basierte Navigation via faces-config.xml */
 			return "update";
-		}		
+		}
+		
+		public String deleteBook(Book book) {
+			rawBooks.remove(book);
+			booksDataModel = new ListDataModel<Book>(rawBooks);
+			return "delete";
+		}
 		
        public String saveBook() {
     	   if (!rawBooks.contains(inedit)) {
