@@ -44,7 +44,9 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">#{msg['index.actions']}</f:facet>
-					TODO
+					<h:form>
+						<h:commandButton value="Editieren" action="#{bookShelf.prepareBookEdit(onebook)}" />
+					</h:form>
 				</h:column>
 			</h:dataTable>
 			<!-- h:form ist notwendig, damit h:commandButton funktioniert -->

@@ -72,6 +72,12 @@ public class BookShelf implements Serializable{
 			inedit = new Book();
 			return "create";
 		}
+
+		public String prepareBookEdit(Book book) {
+			inedit = book;
+			/* Regel-basierte Navigation via faces-config.xml */
+			return "update";
+		}		
 		
        public String saveBook() {
     	   if (!rawBooks.contains(inedit)) {
