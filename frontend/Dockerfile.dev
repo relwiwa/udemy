@@ -1,0 +1,10 @@
+FROM node:alpine
+
+WORKDIR "/usr/app"
+
+COPY package.json .
+# dependencies get installed inside image, so local node_modules folder can be deleted
+RUN npm install
+COPY . .
+
+CMD ["npm", "start"]
