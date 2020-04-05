@@ -10,3 +10,13 @@ services:
             - /usr/app/node_modules
             - .:/usr/app
         stdin_open: true
+    tests:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - /usr/app/node_modules
+            - .:/usr/app
+        # overwrite default command
+        command: ["npm", "test"]
+        stdin_open: true
