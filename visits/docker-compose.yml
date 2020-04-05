@@ -1,0 +1,10 @@
+version: "3"
+services:
+    redis-server:
+        image: "redis"
+    node-app:
+        # look for a Dockerfile in the current directory
+        build: .
+        ports:
+            # - marks an array inside a yml file 
+            - "4001:8081"
