@@ -3,6 +3,8 @@ services:
     redis-server:
         image: "redis"
     node-app:
+        # "no" | always | on-failure (exit code > 0) | unless-stopped 
+        restart: on-failure
         # look for a Dockerfile in the current directory
         build: .
         ports:
