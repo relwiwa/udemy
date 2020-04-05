@@ -2,8 +2,7 @@
 FROM node:alpine
 
 # Specify directory inside container where to execute commands
-RUN mkdir -p /usr/app
-WORKDIR /usr/app
+WORKDIR "/usr/app"
 
 # Copy package.json before all other files, so installing the dependencies will be cached
 # for future docker builds unless package.json changed
