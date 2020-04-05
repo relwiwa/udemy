@@ -2,7 +2,7 @@
     "dependencies": {
         "express": "*"
     },
-    "script": {
+    "scripts": {
         "start": "node index.js"
     }
 }
