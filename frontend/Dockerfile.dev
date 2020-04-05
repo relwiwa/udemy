@@ -5,6 +5,8 @@ WORKDIR "/usr/app"
 COPY package.json .
 # dependencies get installed inside image, so local node_modules folder can be deleted
 RUN npm install
+
+# copying may be deleted for now, as we are using local files via docker volumes
 COPY . .
 
 CMD ["npm", "start"]
